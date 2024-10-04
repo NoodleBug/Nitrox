@@ -55,6 +55,14 @@ namespace NitroxClient.MonoBehaviours
             SmoothVelocity.Target = remoteVelocity;
             SmoothRotation.Target = remoteRotation;
             SmoothAngularVelocity.Target = remoteAngularVelocity;
+
+            if(Vector3.Distance(SmoothPosition.Target, SmoothPosition.Current) >= 50f)
+            {
+                SmoothPosition.Current = remotePosition;
+                SmoothVelocity.Current = remoteVelocity;
+                SmoothRotation.Current = remoteRotation;
+                SmoothAngularVelocity.Current = remoteAngularVelocity;
+            }
         }
 
         internal virtual void SetSteeringWheel(float yaw, float pitch)
